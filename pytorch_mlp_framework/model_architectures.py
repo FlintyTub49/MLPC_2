@@ -446,3 +446,5 @@ class ConvolutionalDimensionalityReductionBlockWithBatchNorm(nn.Module):
         out = F.leaky_relu(out)
 
         return out
+    
+# TODO: Add batch normalisation with Residual Connections - Both Functions

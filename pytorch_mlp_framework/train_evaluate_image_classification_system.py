@@ -58,7 +58,7 @@ if args.block_type == 'conv_block':
 elif args.block_type == 'empty_block':
     processing_block_type = EmptyBlock
     dim_reduction_block_type = EmptyBlock
-else:
+else: #TODO: Add elif for processing Batch Normalization
     raise ModuleNotFoundError
 
 custom_conv_net = ConvolutionalNetwork(  # initialize our network object, in this case a ConvNet
