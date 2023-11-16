@@ -3,13 +3,16 @@ import torch
 from torch.utils.data import DataLoader
 from torchvision import transforms
 
+import multiprocessing as mp
+mp.set_start_method('fork')
+
 import sys
 import os
-os.environ["MLP_DATA_DIR"] = '/home/arthakhouri/MLPC_2/data'
-sys.path.append('/home/arthakhouri/MLPC_2/')
+# os.environ["MLP_DATA_DIR"] = '/home/arthakhouri/MLPC_2/data'
+# sys.path.append('/home/arthakhouri/MLPC_2/')
 
-# os.environ["MLP_DATA_DIR"] = '/Users/arthakhouri/Desktop/UoE/Machine Learning Practical/MLPC_2/data'
-# sys.path.append('/Users/arthakhouri/Desktop/UoE/Machine Learning Practical/MLPC_2')
+os.environ["MLP_DATA_DIR"] = '/Users/arthakhouri/Desktop/UoE/Machine Learning Practical/MLPC_2/data'
+sys.path.append('/Users/arthakhouri/Desktop/UoE/Machine Learning Practical/MLPC_2')
 
 import warnings
 warnings.filterwarnings("ignore")
@@ -76,4 +79,5 @@ conv_experiment = ExperimentBuilder(network_model=custom_conv_net,
                                     continue_from_epoch=args.continue_from_epoch,
                                     train_data=train_data_loader, val_data=val_data_loader,
                                     test_data=test_data_loader)  # build an experiment object
+# conv_experiment.plot_gradient_flows('/Users/arthakhouri/Desktop/UoE/Machine Learning Practical/MLPC_2/VGG_38_experiment/saved_models', 20)
 experiment_metrics, test_metrics = conv_experiment.run_experiment()  # run experiment and return experiment metrics

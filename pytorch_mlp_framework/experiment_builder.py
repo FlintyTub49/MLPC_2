@@ -49,6 +49,11 @@ class ExperimentBuilder(nn.Module):
             self.device = torch.device('cpu')  # sets the device to be CPU
             print(self.device)
 
+        if torch.backends.mps.is_available() and use_gpu:
+            self.device = torch.device("mps")
+            self.model.to(self.device)
+            print('Use mps', self.device)
+
         # self.device = torch.device('mps') # sets the device to mps
         # print(f'Final Device: {self.device}')
 
@@ -328,3 +333,26 @@ class ExperimentBuilder(nn.Module):
                         stats_dict=test_losses, current_epoch=0, continue_from_mode=False)
 
         return total_losses, test_losses
+    
+    def plot_gradient_flows(self, experiment_saved_models, num_epochs):
+        """"
+        Plots gradient flows from each saved model after reading the models.
+        param experiment_saved_models: The directory where models are saved.
+        :param num_epochs: Total number of epochs.
+        """
+        plt.figure(figsize=(12, 8))
+        
+        for epoch_idx in tqdm.tqdm(range(num_epochs)):
+            model_path = os.path.join(experiment_saved_models, f"train_model_{epoch_idx}")
+            if os.path.exists(model_path):
+                # Load the model
+                model_state = torch.load(model_path)
+                model = ExperimentBuilder(self.network_model, self.experiment_name, num_epochs, self.train_data, 
+                                          self.val_data, self.test_data, self.weight_decay_coefficient, self.use_gpu)
+                model.load_state_dict(model_state['network'])
+                
+                # Plot gradient flow
+                plt = model.plot_grad_flow(model.named_parameters())
+                plt.title(f"Gradient Flow at Epoch {epoch_idx}")
+                plt.savefig(os.path.join(experiment_saved_models, 'gradient_flow_plots', f"epoch{epoch_idx}_gradient_flow.pdf"))
+
