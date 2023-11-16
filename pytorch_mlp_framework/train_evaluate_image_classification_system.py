@@ -58,10 +58,13 @@ test_data_loader = DataLoader(test_data, batch_size=args.batch_size, shuffle=Tru
 if args.block_type == 'conv_block':
     processing_block_type = ConvolutionalProcessingBlock
     dim_reduction_block_type = ConvolutionalDimensionalityReductionBlock
+elif args.block_type == 'batch_norm':
+    processing_block_type = ConvWithBatchNorm
+    dim_reduction_block_type = ConvRedWtihBatchNorm
 elif args.block_type == 'empty_block':
     processing_block_type = EmptyBlock
     dim_reduction_block_type = EmptyBlock
-else: #TODO: Add elif for processing Batch Normalization
+else:
     raise ModuleNotFoundError
 
 custom_conv_net = ConvolutionalNetwork(  # initialize our network object, in this case a ConvNet
