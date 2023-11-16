@@ -160,7 +160,7 @@ class ExperimentBuilder(nn.Module):
         for layer_name, gradients in named_parameters:
             if 'bias' not in layer_name and gradients.requires_grad:
                 all_grads.append(gradients.grad.abs().mean().item())
-                layers.append(layer_name)
+                layers.append(layer_name.replace('layer_dict.', '')[:-7])
             
         
         plt = self.plot_func_def(all_grads, layers)
