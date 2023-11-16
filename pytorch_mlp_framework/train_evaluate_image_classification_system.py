@@ -5,11 +5,11 @@ from torchvision import transforms
 
 import sys
 import os
-# os.environ["MLP_DATA_DIR"] = '/home/arthakhouri/MLPC_2/data'
-# sys.path.append('/home/arthakhouri/MLPC_2/')
+os.environ["MLP_DATA_DIR"] = '/home/arthakhouri/MLPC_2/data'
+sys.path.append('/home/arthakhouri/MLPC_2/')
 
-os.environ["MLP_DATA_DIR"] = '/Users/arthakhouri/Desktop/UoE/Machine Learning Practical/MLPC_2/data'
-sys.path.append('/Users/arthakhouri/Desktop/UoE/Machine Learning Practical/MLPC_2')
+# os.environ["MLP_DATA_DIR"] = '/Users/arthakhouri/Desktop/UoE/Machine Learning Practical/MLPC_2/data'
+# sys.path.append('/Users/arthakhouri/Desktop/UoE/Machine Learning Practical/MLPC_2')
 
 import warnings
 warnings.filterwarnings("ignore")

@@ -340,9 +340,9 @@ class ConvolutionalNetwork(nn.Module):
         self.logit_linear_layer.reset_parameters()
 
 
-class ConvolutionalProcessingBlockWithBatchNorm(nn.Module):
+class ConvProcBlockWithBatchNorm(nn.Module):
     def __init__(self, input_shape, num_filters, kernel_size, padding, bias, dilation):
-        super(ConvolutionalProcessingBlock, self).__init__()
+        super(ConvProcBlockWithBatchNorm, self).__init__()
 
         self.num_filters = num_filters
         self.kernel_size = kernel_size
@@ -392,9 +392,9 @@ class ConvolutionalProcessingBlockWithBatchNorm(nn.Module):
         return out
 
 
-class ConvolutionalDimensionalityReductionBlockWithBatchNorm(nn.Module):
+class ConvDimRedBlockWithBatchNorm(nn.Module):
     def __init__(self, input_shape, num_filters, kernel_size, padding, bias, dilation, reduction_factor):
-        super(ConvolutionalDimensionalityReductionBlock, self).__init__()
+        super(ConvDimRedBlockWithBatchNorm, self).__init__()
 
         self.num_filters = num_filters
         self.kernel_size = kernel_size
