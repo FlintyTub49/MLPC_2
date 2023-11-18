@@ -976,11 +976,11 @@ INPUT /usr/local/texlive/2023/texmf-dist/fonts/vf/public/txfonts/t1xb.vf
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/txfonts/rtxptmb.tfm
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/txfonts/rtxb.tfm
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/txfonts/t1xbi.tfm
-INPUT ./figures/gradplot_38_watermarked.pdf
-INPUT ./figures/gradplot_38_watermarked.pdf
-INPUT figures/gradplot_38_watermarked.pdf
-INPUT ./figures/gradplot_38_watermarked.pdf
-INPUT ./figures/gradplot_38_watermarked.pdf
+INPUT ./figures/gradplot_38.pdf
+INPUT ./figures/gradplot_38.pdf
+INPUT figures/gradplot_38.pdf
+INPUT ./figures/gradplot_38.pdf
+INPUT ./figures/gradplot_38.pdf
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/txfonts/t1xi.tfm
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/vf/public/txfonts/t1xbi.vf
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/txfonts/rtxptmbi.tfm

@@ -1,5 +1,5 @@
 %% REPLACE sXXXXXXX with your student number
-\def\studentNumber{sXXXXXXX}
+\def\studentNumber{S25697578}
 
 
 %% START of YOUR ANSWERS
@@ -24,10 +24,11 @@
 
 %% Question 1:
 \newcommand{\questionOne} {
-\youranswer{Question 1 - Use Figures 1, 2, and 3 to identify the Vanishing Gradient Problem (which of these model suffers from it, and what are the consequences depicted?).
-
-The average length for an answer to this question is approximately 1/5 of the columns in a 2-column page}
+\youranswer{From Figure 2 and 3, we can see that there is a healthy amount of gradient flow across the different layers of VGG 08 model, but not the VGG 38 model. This indicates that the gradient is not flowing properly through the layers of the VGG 38 model pointing that it suffers from a vanishing gradient problem which is hampering the training of the model. 
+This is further supported by Figure 1 (a) and (b) which show that the loss of the VGG 38 model remains high while the accuracy being very low on both the training and the validation datasets.}
 }
+% Question 1 - Use Figures 1, 2, and 3 to identify the Vanishing Gradient Problem (which of these model suffers from it, and what are the consequences depicted?).
+% The average length for an answer to this question is approximately 1/5 of the columns in a 2-column page
 
 %% Question 2:
 \newcommand{\questionTwo} {
@@ -80,7 +81,7 @@ The length of this question description is indicative of the average length of a
 %
 \begin{figure}[t]
     \centering
-    \includegraphics[width=\linewidth]{figures/gradplot_38_watermarked.pdf}
+    \includegraphics[width=\linewidth]{figures/gradplot_38.pdf}
     \caption{Gradient Flow on VGG38}
     \label{fig:grad_flow_38}
 \end{figure}
