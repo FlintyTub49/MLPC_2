@@ -32,17 +32,25 @@ This is further supported by Figure 1 (a) and (b) which show that the loss of th
 
 %% Question 2:
 \newcommand{\questionTwo} {
-\youranswer{Question 2 - Consider these results (including Figure 1 from \cite{he2016deep}). Discuss the relation between network capacity and overfitting, and whether, and how, this is reflected on these results. What other factors may have lead to this difference in performance?
-
-The average length for an answer to this question is
-approximately 1/5 of the columns in a 2-column page}
+\youranswer{A complex model like VGG38 has a lot of network capacity due to its deeper architecture. But a complex model like this is more likely to encounter the vanishing gradients problem, hindering effective weight update in its earlier layers (Figure 3). This is too be observed because VGG38 has an exteremly deep architecture and is made to handle more complex 
+tasks and larger datasets. The image size of the CIFAR100 class is only $32\times32$ with 100 classes which is very less for VGG38. In contrast, a shallower model with relatively less network capacity (VGG08), exhibits normal gradient flow and is able to use its architecture and depth more efficiently to learn the data and train a better and more efficient model.
+Some other factors that may have contributed to this difference include the model architecture, optimisation techniques used and the dataset structure.}
 }
+% Question 2 - Consider these results (including Figure 1 from \cite{he2016deep}). Discuss the relation between network capacity and overfitting, and whether, and how, this is reflected on these results. What other factors may have lead to this difference in performance?
+% The average length for an answer to this question is approximately 1/5 of the columns in a 2-column page}
 
 %% Question 3:
 \newcommand{\questionThree} {
-\youranswer{Question 3 - In this coursework, we didn't incorporate residual connections to the downsampling layers. Explain and justify what would need to be changed in order to add residual connections to the downsampling layers. Give and explain 2 ways of incorporating these changes and discuss pros and cons of each.
+\youranswer{Residual connections are difficult to implement in downsampling layers because of the mismatch in the dimension from the residual to the point where it is being added back to the network. We would have to alter the model architecture in order to incorportate this ability in our model. This residual connection would serve as a shortcut for the gradients to 
+directly flow through, skipping layers and preserving the gradient information helping in better training of deep models. There are 2 primary ways to implement this: Direct Residual Connections \& Bottleneck Residual Connections \cite{he2016deep}:
+\begin{itemize}
+    \item Direct Residual Connections: In this method, the input gradients are directly added to the output of the downsampled layer. This method is very intuitive and relatively easy to implement in the model architecture. If we were to look at the downsides of this method, it still carries the risk of attracting the phenomenon of vanishing gradients in very deep models. 
+    It might also be not very efficient for models with extensive depth.
+    \item Bottleneck Residual Connections: This method utilises $1\times1$ convolutions to reduce and expand the number of features in the model enabling healthier gradient flow. This also helps in reducing the number of parameters effectively reducing the computational cost of the model. Although it is better at tackling the issue of vanishing gradients in very deep models, 
+    it is more complex than Direct Residual Connections and adds extra $1\times1$ convolutions to the model architecture.
+\end{itemize}}
 }
-}
+% In this coursework, we didn't incorporate residual connections to the downsampling layers. Explain and justify what would need to be changed in order to add residual connections to the downsampling layers. Give and explain 2 ways of incorporating these changes and discuss pros and cons of each.
 
 %% Question 4:
 \newcommand{\questionFour} {
@@ -75,13 +83,11 @@ The length of this question description is indicative of the average length of a
 
 %% Question Figure 3:
 \newcommand{\questionFigureThree} {
-\youranswer{Question Figure 3 - Replace this image with a figure depicting the average gradient across layers, for the VGG38 model.
-
-\textit{(The provided figure is correct, and can be used in your analysis. It is partially obscured so you can get credit for producing your own copy).}
-%
+\youranswer{Question Figure 3
+% \textit{(The provided figure is correct, and can be used in your analysis. It is partially obscured so you can get credit for producing your own copy).}
 \begin{figure}[t]
     \centering
-    \includegraphics[width=\linewidth]{figures/gradplot_38.pdf}
+    \includegraphics[width=\linewidth]{figures/vgg38_gf_bl.pdf}
     \caption{Gradient Flow on VGG38}
     \label{fig:grad_flow_38}
 \end{figure}
@@ -133,11 +139,11 @@ Question Table 1 - Fill in Table 1 with the results from your experiments on
     \midrule
         VGG08                   & 1e-3 & 60 K      &  1.74      & 51.59     & 1.95     & 46.84 \\
         VGG38                   & 1e-3 & 336 K     &  4.61      & 00.01     & 4.61     & 00.01 \\
-        VGG38 BN                & 1e-3 &     ?     &     ?      &     ?     &    ?     &     ? \\
+        VGG38 BN                & 1e-3 &     ?     &  1.53      & 56.36     & 1.97     & 47.32 \\
         VGG38 RC                & 1e-3 & 336 K     &  1.33      & 61.52     & 1.84     & 52.32 \\
         VGG38 BN + RC           & 1e-3 & 339 K     &  1.26      & 62.99     & 1.73     & 53.76 \\
         VGG38 BN                & 1e-2 & 339 K     &  1.70      & 52.28     & 1.99     & 46.72 \\
-        VGG38 BN + RC           & 1e-2 &     ?     &     ?      &     ?     &    ?     &     ? \\
+        VGG38 BN + RC           & 1e-2 &     ?     &  0.66      & 79.26     & 1.76     & 58.67 \\
     \bottomrule
     \end{tabular}
     \caption{Experiment results (number of model parameters, Training and Validation loss and accuracy) for different combinations of VGG08, VGG38, Batch Normalisation (BN), and Residual Connections (RC), LR is learning rate.}
