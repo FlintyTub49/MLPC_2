@@ -42,7 +42,7 @@ Some other factors that may have contributed to this difference include the mode
 %% Question 3:
 \newcommand{\questionThree} {
 \youranswer{Residual connections are difficult to implement in downsampling layers because of the mismatch in the dimension from the residual to the point where it is being added back to the network. We would have to alter the model architecture in order to incorportate this ability in our model. This residual connection would serve as a shortcut for the gradients to 
-directly flow through, skipping layers and preserving the gradient information helping in better training of deep models. There are 2 primary ways to implement this: Direct Residual Connections \& Bottleneck Residual Connections \cite{he2016deep}:
+directly flow through, skipping layers and preserving the gradient information helping in better training of deep models. There are 2 primary ways to implement this - Direct Residual Connections \& Bottleneck Residual Connections \cite{he2016deep}:
 \begin{itemize}
     \item Direct Residual Connections: In this method, the input gradients are directly added to the output of the downsampled layer. This method is very intuitive and relatively easy to implement in the model architecture. If we were to look at the downsides of this method, it still carries the risk of attracting the phenomenon of vanishing gradients in very deep models. 
     It might also be not very efficient for models with extensive depth.
