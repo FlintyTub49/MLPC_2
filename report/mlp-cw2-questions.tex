@@ -33,7 +33,7 @@ This is further supported by Figure 1 (a) and (b) which show that the loss of th
 %% Question 2:
 \newcommand{\questionTwo} {
 \youranswer{A complex model like VGG38 has a lot of network capacity due to its deeper architecture. But a complex model like this is more likely to encounter the vanishing gradients problem, hindering effective weight update in its earlier layers (Figure 3). This is too be observed because VGG38 has an exteremly deep architecture and is made to handle more complex 
-tasks and larger datasets. The image size of the CIFAR100 class is only $32\times32$ with 100 classes which is very less for VGG38. In contrast, a shallower model with relatively less network capacity (VGG08), exhibits normal gradient flow and is able to use its architecture and depth more efficiently to learn the data and train a better and more efficient model.
+tasks and larger datasets. The image size of the CIFAR100 class is only $32\times32$ with 100 classes which is very less for VGG38. In contrast, a shallower model with relatively less network capacity (VGG08), exhibits normal gradient flow and is able to use its architecture and depth more efficiently to learn the data and train a relatively better and more efficient model.
 Some other factors that may have contributed to this difference include the model architecture, optimisation techniques used and the dataset structure.}
 }
 % Question 2 - Consider these results (including Figure 1 from \cite{he2016deep}). Discuss the relation between network capacity and overfitting, and whether, and how, this is reflected on these results. What other factors may have lead to this difference in performance?
@@ -91,46 +91,38 @@ The length of this question description is indicative of the average length of a
     \caption{Gradient Flow on VGG38}
     \label{fig:grad_flow_38}
 \end{figure}
-}
-}
+}}
 
 %% Question Figure 4:
 \newcommand{\questionFigureFour} {
-\youranswer{Question Figure 4 - Replace this image with a figure depicting the training curves for the model with the best performance \textit{across experiments you have available (you don't need to run the experiments for the models we already give you results for)}. Edit the caption so that it clearly identifies the model and what is depicted.
-%
+\youranswer{Question Figure 4
+% Replace this image with a figure depicting the training curves for the model with the best performance \textit{across experiments you have available (you don't need to run the experiments for the models we already give you results for)}. Edit the caption so that it clearly identifies the model and what is depicted.
 \begin{figure}[t]
     \centering
-    \includegraphics[width=\linewidth]{example-image-duck}
-    \caption{Training curves for ? ? ?}
+    \includegraphics[width=\linewidth]{figures/best_model_accuracy_performance.pdf} % Placeholder - example-image-duck
+    \caption{Training curves for VGG38 with Batch Normalisation and Residual Connections in terms of classification accuracy}
     \label{fig:grad_flow_bestModel}
 \end{figure}
-}
-}
+}}
 
 %% Question Figure 5:
 \newcommand{\questionFigureFive} {
-\youranswer{Question Figure 5 - Replace this image with a figure depicting the average gradient across layers, for the model with the best performance \textit{across experiments you have available (you don't need to run the experiments for the models we already give you results for)}. Edit the caption so that it clearly identifies the model and what is depicted.
-%
+\youranswer{Question Figure 5
+% Replace this image with a figure depicting the average gradient across layers, for the model with the best performance \textit{across experiments you have available (you don't need to run the experiments for the models we already give you results for)}. Edit the caption so that it clearly identifies the model and what is depicted.
 \begin{figure}[t]
     \centering
-    \includegraphics[width=\linewidth]{example-image-duck}
-    \caption{Gradient Flow on ? ? ?}
+    \includegraphics[width=\linewidth]{figures/vgg38_bnrc_gf.pdf} % Placeholder - example-image-duck
+    \caption{Gradient Flow on VGG38 with Batch Normalisation and Residual Connections}
     \label{fig:grad_flow_bestModel}
 \end{figure}
-}
-}
+}}
 
 %% - - - - - - - - - - - - TABLES - - - - - - - - - - - - 
 
 %% Question Table 1:
 \newcommand{\questionTableOne} {
-\youranswer{
-Question Table 1 - Fill in Table 1 with the results from your experiments on 
-\begin{enumerate}
-    \item \textit{VGG38 BN (LR 1e-3)}, and 
-    \item \textit{VGG38 BN + RC (LR 1e-2)}.
-\end{enumerate}
-%
+\youranswer{Question Table 1:\par - \textit{VGG38 BN (LR 1e-3)} \par - \textit{VGG38 BN + RC (LR 1e-2)}.
+% Fill in Table 1 with the results from your experiments on 
 \begin{table*}[t]
     \centering
     \begin{tabular}{lr|ccccc}
@@ -139,11 +131,11 @@ Question Table 1 - Fill in Table 1 with the results from your experiments on
     \midrule
         VGG08                   & 1e-3 & 60 K      &  1.74      & 51.59     & 1.95     & 46.84 \\
         VGG38                   & 1e-3 & 336 K     &  4.61      & 00.01     & 4.61     & 00.01 \\
-        VGG38 BN                & 1e-3 &     ?     &  1.53      & 56.36     & 1.97     & 47.32 \\
+        VGG38 BN                & 1e-3 & 339 K     &  1.53      & 56.36     & 1.97     & 47.32 \\
         VGG38 RC                & 1e-3 & 336 K     &  1.33      & 61.52     & 1.84     & 52.32 \\
         VGG38 BN + RC           & 1e-3 & 339 K     &  1.26      & 62.99     & 1.73     & 53.76 \\
         VGG38 BN                & 1e-2 & 339 K     &  1.70      & 52.28     & 1.99     & 46.72 \\
-        VGG38 BN + RC           & 1e-2 &     ?     &  0.66      & 79.26     & 1.76     & 58.67 \\
+        VGG38 BN + RC           & 1e-2 & 339 K     &  0.66      & 79.26     & 1.76     & 58.67 \\
     \bottomrule
     \end{tabular}
     \caption{Experiment results (number of model parameters, Training and Validation loss and accuracy) for different combinations of VGG08, VGG38, Batch Normalisation (BN), and Residual Connections (RC), LR is learning rate.}
