@@ -22,7 +22,7 @@
 
 %% - - - - - - - - - - - - TEXT QUESTIONS - - - - - - - - - - - - 
 
-%% Question 1:
+ % ----------------------------- Question 1: ----------------------------- %
 \newcommand{\questionOne} {
 \youranswer{From Figure 2 and 3, we can see that there is a healthy amount of gradient flow across the different layers of VGG 08 model, but not the VGG 38 model. This indicates that the gradient is not flowing properly through the layers of the VGG 38 model pointing that it suffers from a vanishing gradient problem which is hampering the training of the model. 
 This is further supported by Figure 1 (a) and (b) which show that the loss of the VGG 38 model remains high while the accuracy being very low on both the training and the validation datasets.}
@@ -30,7 +30,7 @@ This is further supported by Figure 1 (a) and (b) which show that the loss of th
 % Question 1 - Use Figures 1, 2, and 3 to identify the Vanishing Gradient Problem (which of these model suffers from it, and what are the consequences depicted?).
 % The average length for an answer to this question is approximately 1/5 of the columns in a 2-column page
 
-%% Question 2:
+% ----------------------------- Question 2: ----------------------------- %
 \newcommand{\questionTwo} {
 \youranswer{A complex model like VGG38 has a lot of network capacity due to its deeper architecture. But a complex model like this is more likely to encounter the vanishing gradients problem, hindering effective weight update in its earlier layers (Figure 3). This is too be observed because VGG38 has an exteremly deep architecture and is made to handle more complex 
 tasks and larger datasets. The image size of the CIFAR100 class is only $32\times32$ with 100 classes which is very less for VGG38. In contrast, a shallower model with relatively less network capacity (VGG08), exhibits normal gradient flow and is able to use its architecture and depth more efficiently to learn the data and train a relatively better model.
@@ -39,7 +39,7 @@ Some other factors that may have contributed to this difference include the mode
 % Question 2 - Consider these results (including Figure 1 from \cite{he2016deep}). Discuss the relation between network capacity and overfitting, and whether, and how, this is reflected on these results. What other factors may have lead to this difference in performance?
 % The average length for an answer to this question is approximately 1/5 of the columns in a 2-column page}
 
-%% Question 3:
+% ----------------------------- Question 3: ----------------------------- %
 \newcommand{\questionThree} {
 \youranswer{Residual connections are difficult to implement in downsampling layers because of the mismatch in the dimension from the residual to the point where it is being added back to the network. We would have to alter the model architecture in order to incorportate this ability in our model. This residual connection would serve as a shortcut for the gradients to 
 directly flow through, skipping layers and preserving the gradient information helping in better training of deep models. There are 2 primary ways to implement this - Direct Residual Connections \& Bottleneck Residual Connections \cite{he2016deep}:
@@ -52,18 +52,22 @@ directly flow through, skipping layers and preserving the gradient information h
 }
 % In this coursework, we didn't incorporate residual connections to the downsampling layers. Explain and justify what would need to be changed in order to add residual connections to the downsampling layers. Give and explain 2 ways of incorporating these changes and discuss pros and cons of each.
 
-%% Question 4:
+% ----------------------------- Question 4: ----------------------------- %
 \newcommand{\questionFour} {
 \youranswer{Variety of experiments were performed on the VGG38 model implementing a plethora of techniques to combat the vanishing gradient problem and then check its performance on the CIFAR100 dataset. A baseline VGG08 model was used a reference point which did not suffer from a vanishing gradient problem like the baseline VGG38 model did.\par
-The first step taken to solve the vanishing gradient problem was to introduce batch normalisation between the layers. It reduces the weights from getting too large or small ensures healthy flow of the gradient. The introduction of the batch normalisation instantly fixes the problem of vanishing gradient and the model starts to learn some features from the data. It is to be 
-noted that the addition of Batch Normalisation adds approximately $3,000$ parameters to the model increasing the computational cost to train it. The end results are slightly better than that of the baseline VGG08 model but the loss is still relatively high and with the accuracy still leaving room for improvement (Table 1).\par
-The next step was to introduce Residual Connections in the VGG38 model. These shortcuts preserve the gradient and help in the training of very deep models like the VGG38. This is again proven to be an effective method for tackling vanishing gradients and lets the model learn features of the dataset. As discussed in Section 5.1, there are different ways to implement residual 
-connection in a model architecture. We have used direct residual connection methodolgy for this experiment which does not add any parameters to the model. The performance of this version of VGG38 is only marginally better than the VGG38 model with batch normalisation (Table 1).\par
-The next logical step is was to combine the two methods to see if they offer some enhancement. There was little improvement when compared to the model with residual connections indicating that other parameters of the model have to be changed to get better results. The learning rate was increased to $0.01$ from $0.001$. This was first changed in the model with only batch 
-normalisation to study its effects on the model. This variation ended up performing worse than the previous models. This new learning rate was then applied to the VGG38 model with both Batch Normalisation and Residual Connections. This significantly improved the model`s performance on the train set but not that much test set. One can assume that this combination of large 
-learning rate with Batch Normalisation and Residual Connections has ensured the healthy flow of gradient, but due to its huge network capacity and small dataset for its size, the model is still overfitting on the data.\par
-WRITE ABOUT OTHER EXPERIMENTS TO RUN WHICH WILL IMPROVE THE MODEL OR HOW WE CAN LEARN FROM BN \& RC. \\
-MAYBE COMBINE PARAS 2 AND 3 TO MAKE ROOM FOR MORE EXPERIMENTS. TALK ABOUT FIXING THE MODEL WITH BOTH BN AND RC TOGETHER}
+
+We introduced batch normalisation and residual connections in the VGG38 model architecture to combat the problem of vanishing gradients. Batch Normalisation prevents the weights from getting too large or small ensuring a healthy flow of the gradient through the layers. It is to be noted that the addition of Batch Normalisation adds approximately \textit{3,000} parameters to the 
+model increasing the computational cost to train it. Direct Residual Connections (Section 5.1) does not add any parameters to the model. It ensures the preservation of gradient in training of very deep models.\par 
+
+The introduction of these modifications instantly fixes the problem of vanishing gradient and the model starts to learn some features from the data. Keeping the learning rate constant, the end results are marginally better than that of the baseline VGG08 model but the loss is still relatively high and there is still room for improvement in the accuracy of the model (Table 1).\par
+
+We then combined the two methods to see if they boost the model performance. There was little improvement when compared to the model with residual connections indicating that other parameters of the model have to be changed to get better results. The learning rate (LR) was increased to \textit{0.01} from \textit{0.001}. This was first changed in the model with only batch 
+normalisation to study its effects on the model. This variation ended up performing worse than the previous models (Table 1). \par
+
+This new learning rate was then applied to the VGG38 model with both Batch Normalisation and Residual Connections. This significantly improved the model's performance on the train set but not that much test set. This combination of large learning rate with BN and RC has ensured the healthy flow of gradient, but due to its huge network capacity and small 
+dataset for its size, the model is still overfitting on the data.\par
+
+Taking this experiment further, we can try modifying the LR in the VGG38 model with just RC and see how the relatively big jumps in gradients are influenced by shortcuts in the different layers of the CNN.}
 }
 % Question 4 - Present and discuss the experiment results (all of the results and not just the ones you had to fill in) in Table 1 and Figures 4 and 5 (you may use any of the other Figures if you think they are relevant to your analysis). You will have to determine what data are relevant to the discussion, and what information can be extracted from it. 
 % Also, discuss what further experiments you would have ran on any combination of VGG08, VGG38, BN, RC in order to
@@ -71,8 +75,12 @@ MAYBE COMBINE PARAS 2 AND 3 TO MAKE ROOM FOR MORE EXPERIMENTS. TALK ABOUT FIXING
 % - Learn more about the behaviour of BN and RC (explain what you are trying to learn and how).
 % The average length for an answer to this question is approximately 1 of the columns in a 2-column page
 
+% The next step was to introduce Residual Connections in the VGG38 model. These shortcuts preserve the gradient and help in the training of very deep models like the VGG38. This is again proven to be an effective method for tackling vanishing gradients and lets the model learn features of the dataset. As discussed in Section 5.1, there are different ways to implement residual 
+% connection in a model architecture. We have used direct residual connection methodolgy for this experiment which does not add any parameters to the model. The performance of this version of VGG38 is only marginally better than the VGG38 model with batch normalisation (Table 1).\par
+% WRITE ABOUT OTHER EXPERIMENTS TO RUN WHICH WILL IMPROVE THE MODEL OR HOW WE CAN LEARN FROM BN \& RC. \\
+% TALK ABOUT FIXING THE MODEL WITH BOTH BN AND RC TOGETHER}
 
-%% Question 5:
+% ----------------------------- Question 5: ----------------------------- %
 \newcommand{\questionFive} {
 \youranswer{Question 5 - Briefly draw your conclusions based on the results from the previous sections (what are the take-away messages?) and conclude your report with a recommendation for future work. 
 
