@@ -59,10 +59,10 @@ if args.block_type == 'conv_block':
     processing_block_type = ConvolutionalProcessingBlock
     dim_reduction_block_type = ConvolutionalDimensionalityReductionBlock
 elif args.block_type == 'batch_norm':
-    processing_block_type = ConvolutionalBatchNormBlock
+    processing_block_type = ConvolutionsBlockBN
     dim_reduction_block_type = ConvolutionalReductionBlockBN
 elif args.block_type == 'bn_rc':
-    processing_block_type = ConvolutionalBatchNormBlockRC
+    processing_block_type = ConvolutionsBlockBNRC
     dim_reduction_block_type = ConvolutionalReductionBlockBN
 elif args.block_type == 'empty_block':
     processing_block_type = EmptyBlock
