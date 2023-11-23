@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex mlp-cw2-template"] 1700475873 "mlp-cw2-template.aux" "mlp-cw2-template.bbl" "mlp-cw2-template" 1700475874 0
+["bibtex mlp-cw2-template"] 1700475873 "mlp-cw2-template.aux" "mlp-cw2-template.bbl" "mlp-cw2-template" 1700744526 0
   "./icml2017.bst" 1699903730 27014 3bf38cf1c3514ce2660b1751e86eb994 ""
   "./refs.bib" 1699903730 5387 2700fa431e4f9f9a846dd833d749dce5 ""
-  "mlp-cw2-template.aux" 1700475874 4287 eb66fc15c6763e272c470f9b8facfc8a "pdflatex"
+  "mlp-cw2-template.aux" 1700744526 4287 eb66fc15c6763e272c470f9b8facfc8a "pdflatex"
   (generated)
   "mlp-cw2-template.bbl"
   "mlp-cw2-template.blg"
   (rewritten before read)
-["pdflatex"] 1700475873 "/Users/arthakhouri/Desktop/UoE/Machine Learning Practical/MLPC_2/report/mlp-cw2-template.tex" "mlp-cw2-template.pdf" "mlp-cw2-template" 1700475874 0
+["pdflatex"] 1700744525 "/Users/arthakhouri/Desktop/UoE/Machine Learning Practical/MLPC_2/report/mlp-cw2-template.tex" "mlp-cw2-template.pdf" "mlp-cw2-template" 1700744526 0
   "/Users/arthakhouri/Desktop/UoE/Machine Learning Practical/MLPC_2/report/mlp-cw2-template.tex" 1699903730 16351 260a5d6e7495b014d1e29645450a5c38 ""
   "/Users/arthakhouri/Library/texlive/2023/texmf-var/fonts/pk/ljfour/public/bbm/bbm10.600pk" 1699879050 6964 bd602ab4442af698842388e5cceb490e ""
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
@@ -169,10 +169,10 @@
   "figures/loss_plot.pdf" 1699903730 16092 922e9b2400517d61456a771f55e2f37d ""
   "figures/vgg38_bnrc_gf.pdf" 1700391618 62934 0235a1a4b7c94c9f30e701283d7ab9a0 ""
   "figures/vgg38_gf_bl.pdf" 1700325139 16845 5601aab30cc640a9e2a0f0f9ebd45a6b ""
-  "mlp-cw2-questions.tex" 1700475872 14911 d2dcb876ab68248dd4e2f8a140015f28 ""
-  "mlp-cw2-template.aux" 1700475874 4287 eb66fc15c6763e272c470f9b8facfc8a "pdflatex"
+  "mlp-cw2-questions.tex" 1700744524 14911 a874e0ae06530a6075c4cd58d0d84a5f ""
+  "mlp-cw2-template.aux" 1700744526 4287 eb66fc15c6763e272c470f9b8facfc8a "pdflatex"
   "mlp-cw2-template.bbl" 1700475873 3484 51b98822338be8c892cb0e1e28919791 "bibtex mlp-cw2-template"
-  "mlp-cw2-template.out" 1700475874 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "mlp-cw2-template.out" 1700744525 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
   "mlp-cw2-template.tex" 1699903730 16351 260a5d6e7495b014d1e29645450a5c38 ""
   "mlp2022.sty" 1699903730 24081 017e536e72638c28ba568b6183a9a716 ""
   "mlp2022_includes.tex" 1699903730 1331 3e0605b34b8e85850b689f14f953e86b ""
