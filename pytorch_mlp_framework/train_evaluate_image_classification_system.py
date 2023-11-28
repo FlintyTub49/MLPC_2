@@ -9,8 +9,6 @@ mp.set_start_method('fork')
 
 import sys
 import os
-# os.environ["MLP_DATA_DIR"] = '/home/arthakhouri/MLPC_2/data'
-# sys.path.append('/home/arthakhouri/MLPC_2/')
 
 os.environ["MLP_DATA_DIR"] = '/Users/arthakhouri/Desktop/UoE/Machine Learning Practical/MLPC_2/data'
 sys.path.append('/Users/arthakhouri/Desktop/UoE/Machine Learning Practical/MLPC_2')
@@ -22,8 +20,7 @@ import mlp.data_providers as data_providers
 from pytorch_mlp_framework.arg_extractor import get_args
 from pytorch_mlp_framework.experiment_builder import ExperimentBuilder
 from pytorch_mlp_framework.model_architectures import *
-import os 
-# os.environ["CUDA_VISIBLE_DEVICES"]="0"
+import os
 
 args = get_args()  # get arguments from command line
 rng = np.random.RandomState(seed=args.seed)  # set the seeds for the experiment
