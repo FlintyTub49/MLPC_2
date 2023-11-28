@@ -32,8 +32,8 @@ This is further supported by Figure 1 (a) and (b) which show that the loss of th
 
 % ----------------------------- Question 2: ----------------------------- %
 \newcommand{\questionTwo} {
-\youranswer{A complex model like VGG38 has a lot of network capacity due to its deeper architecture. But a complex model like this is more likely to encounter the vanishing gradients problem, hindering effective weight update in its earlier layers (Figure 3). This is too be observed because VGG38 has an exteremly deep architecture and is made to handle more complex 
-tasks and larger datasets. The image size of the CIFAR100 class is only $32\times32$ with 100 classes which is very less for VGG38. In contrast, a shallower model with relatively less network capacity (VGG08), exhibits normal gradient flow and is able to use its architecture and depth more efficiently to learn the data and train a relatively better model.
+\youranswer{A complex model like VGG38 has a lot of network capacity due to its deeper architecture. But a complex model like this is more likely to encounter the vanishing gradients problem, hindering effective weight update in its earlier layers (Figure 3). \underline{This is to be observed} because VGG38 has an exteremly deep architecture and is made to handle more complex 
+tasks and larger datasets. \underline{The image size of the CIFAR100 class} is only $32\times32$ with 100 classes which is very less for VGG38. In contrast, a shallower model with relatively less network capacity (VGG08), exhibits normal gradient flow and is able to use its architecture and depth more efficiently to learn the data and train a relatively better model.
 Some other factors that may have contributed to this difference include the model architecture, optimisation techniques used and the quality of the dataset.}
 }
 % Question 2 - Consider these results (including Figure 1 from \cite{he2016deep}). Discuss the relation between network capacity and overfitting, and whether, and how, this is reflected on these results. What other factors may have lead to this difference in performance?
@@ -67,7 +67,8 @@ normalisation to study its effects on the model. This variation ended up perform
 This new learning rate was then applied to the VGG38 model with both Batch Normalisation and Residual Connections. This significantly improved the model's performance on the train set but not that much test set. This combination of large learning rate with BN and RC has ensured the healthy flow of gradient, but due to its huge network capacity and small 
 dataset for its size, the model is still overfitting on the data.\par
 
-Taking this experiment further, we can try modifying the LR in the VGG38 model with just RC and see how the relatively big jumps in gradients are influenced by shortcuts in the different layers of the CNN.}
+Taking this experiment further, we can implement BN and RC in the VGG08 model to see if it helps in learning more complex features of the data. Alternatively, we could also try modifying the LR in the VGG38 model with just the RC and evaluate how the relatively big jumps in gradients along with shortcuts in the different layers of the CNN influence the training of the model. 
+To get a better understanding of BN \& RC; we can implement BN at particular layers and skip through different numbers of layers while using RC. This permits us to study how each variation, separately or combined, affects the gradient flow at different layers and the overall model performance.}
 }
 % Question 4 - Present and discuss the experiment results (all of the results and not just the ones you had to fill in) in Table 1 and Figures 4 and 5 (you may use any of the other Figures if you think they are relevant to your analysis). You will have to determine what data are relevant to the discussion, and what information can be extracted from it. 
 % Also, discuss what further experiments you would have ran on any combination of VGG08, VGG38, BN, RC in order to
@@ -102,7 +103,7 @@ The length of this question description is indicative of the average length of a
 % \textit{(The provided figure is correct, and can be used in your analysis. It is partially obscured so you can get credit for producing your own copy).}
 \begin{figure}[t]
     \centering
-    \includegraphics[width=\linewidth]{figures/vgg38_gf_bl.pdf}
+    \includegraphics[width=\linewidth]{figures/Base_vgg38_gf.pdf}
     \caption{Gradient Flow on VGG38}
     \label{fig:grad_flow_38}
 \end{figure}
@@ -126,7 +127,7 @@ The length of this question description is indicative of the average length of a
 % Replace this image with a figure depicting the average gradient across layers, for the model with the best performance \textit{across experiments you have available (you don't need to run the experiments for the models we already give you results for)}. Edit the caption so that it clearly identifies the model and what is depicted.
 \begin{figure}[t]
     \centering
-    \includegraphics[width=\linewidth]{figures/vgg38_bnrc_gf.pdf} % Placeholder - example-image-duck
+    \includegraphics[width=\linewidth]{figures/Bnrc_vgg38_gf.pdf} % Placeholder - example-image-duck
     \caption{Gradient Flow on VGG38 with Batch Normalisation and Residual Connections}
     \label{fig:grad_flow_bestModel}
 \end{figure}
