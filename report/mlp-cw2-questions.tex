@@ -32,17 +32,17 @@ This is further supported by Figure 1 (a) and (b) which show that the loss of th
 
 % ----------------------------- Question 2: ----------------------------- %
 \newcommand{\questionTwo} {
-\youranswer{A complex model like VGG38 has a lot of network capacity due to its deeper architecture. But a complex model like this is more likely to encounter the vanishing gradients problem, hindering effective weight update in its earlier layers (Figure 3). \underline{This is to be observed} because VGG38 has an exteremly deep architecture and is made to handle more complex 
-tasks and larger datasets. \underline{The image size of the CIFAR100 class} is only $32\times32$ with 100 classes which is very less for VGG38. In contrast, a shallower model with relatively less network capacity (VGG08), exhibits normal gradient flow and is able to use its architecture and depth more efficiently to learn the data and train a relatively better model.
-Some other factors that may have contributed to this difference include the model architecture, optimisation techniques used and the quality of the dataset.}
+\youranswer{Network capacity refers to a model's ability to capture complex patterns and representations from the data. A model like VGG38 or 56-Layer plain network \cite{he2016deep} has a lot of network capacity due to its deeper architecture. But complex models like these are more likely to encounter the vanishing gradients problem, hindering effective weight update 
+in its earlier layers (Figure 3). This is because VGG38 is made to handle more complex tasks and larger datasets than CIFAR100, in which each image size is only $32\times32$. In contrast, a shallower model with relatively less network capacity (VGG08), exhibits normal gradient flow and is able to use its architecture and depth more efficiently to learn the data and 
+train a relatively better model (Figure 1(a)). Some other factors that may have contributed to this difference include the model architecture, optimisation techniques used and the quality of the dataset.}
 }
 % Question 2 - Consider these results (including Figure 1 from \cite{he2016deep}). Discuss the relation between network capacity and overfitting, and whether, and how, this is reflected on these results. What other factors may have lead to this difference in performance?
 % The average length for an answer to this question is approximately 1/5 of the columns in a 2-column page}
 
 % ----------------------------- Question 3: ----------------------------- %
 \newcommand{\questionThree} {
-\youranswer{Residual connections are difficult to implement in downsampling layers because of the mismatch in the dimension from the residual to the point where it is being added back to the network. We would have to alter the model architecture in order to incorportate this ability in our model. This residual connection would serve as a shortcut for the gradients to 
-directly flow through, skipping layers and preserving the gradient information helping in better training of deep models. There are 2 primary ways to implement this - Direct Residual Connections \& Bottleneck Residual Connections \cite{he2016deep}:
+\youranswer{Residual connections are difficult to implement in downsampling layers because of the mismatch in the dimension from the residual to the point where it is being added back to the network.  This residual connection would serve as a shortcut for the gradients to directly flow through, skipping layers and preserving the gradient information helping in better 
+training of deep models. We would have to alter the model architecture in order to incorportate this ability in our model. There are 2 primary ways to implement this - Direct Residual Connections \& Bottleneck Residual Connections \cite{he2016deep}:
 \begin{itemize}
     \item Direct Residual Connections: In this method, the input gradients are directly added to the output of the downsampled layer. This method is very intuitive and relatively easy to implement in the model architecture. If we were to look at the downsides of this method, it still carries the risk of attracting the phenomenon of vanishing gradients in very deep models. 
     It might also be not very efficient for models with extensive depth.
@@ -67,8 +67,10 @@ normalisation to study its effects on the model. This variation ended up perform
 This new learning rate was then applied to the VGG38 model with both Batch Normalisation and Residual Connections. This significantly improved the model's performance on the train set but not that much test set. This combination of large learning rate with BN and RC has ensured the healthy flow of gradient, but due to its huge network capacity and small 
 dataset for its size, the model is still overfitting on the data.\par
 
-Taking this experiment further, we can implement BN and RC in the VGG08 model to see if it helps in learning more complex features of the data. Alternatively, we could also try modifying the LR in the VGG38 model with just the RC and evaluate how the relatively big jumps in gradients along with shortcuts in the different layers of the CNN influence the training of the model. 
-To get a better understanding of BN \& RC; we can implement BN at particular layers and skip through different numbers of layers while using RC. This permits us to study how each variation, separately or combined, affects the gradient flow at different layers and the overall model performance.}
+Taking this experiment further, we can implement BN and RC in the VGG08 model to see if it helps in learning more complex features of the data. Alternatively, we could also try modifying the LR in the VGG38 model with just the RC and evaluate how the relatively big jumps in gradients along with shortcuts in the different layers of the CNN influence the training of the model. \par
+
+To get a better understanding of BN \& RC; we can implement BN at particular layers and skip through different numbers of layers while using RC. The RC can also be applied across the downsampling layers of the model telling us how the dimension change affects the residual flow through the shortcut. This permits us to study how each variation, separately or combined, affects the 
+gradient flow at different layers and the overall model performance.}
 }
 % Question 4 - Present and discuss the experiment results (all of the results and not just the ones you had to fill in) in Table 1 and Figures 4 and 5 (you may use any of the other Figures if you think they are relevant to your analysis). You will have to determine what data are relevant to the discussion, and what information can be extracted from it. 
 % Also, discuss what further experiments you would have ran on any combination of VGG08, VGG38, BN, RC in order to
@@ -83,16 +85,24 @@ To get a better understanding of BN \& RC; we can implement BN at particular lay
 
 % ----------------------------- Question 5: ----------------------------- %
 \newcommand{\questionFive} {
-\youranswer{Question 5 - Briefly draw your conclusions based on the results from the previous sections (what are the take-away messages?) and conclude your report with a recommendation for future work. 
+\youranswer{Vanishing gradient is a major problem in the training of deep neural networks like the VGG38 or 56-Layer ``plain'' \cite{he2016deep} model. It is a phenomenon where the gradient of the loss function becomes very small as it backpropagates through the layers of the network. This results in the earlier layers of the network not learning any features from the data 
+and the model not being able to train properly.\par
 
-Good recommendations for future work also draw on the broader literature (the papers already referenced are good starting points). Great recommendations for future work are not just incremental (an example of an incremental suggestion would be: ``we could also train with different learning rates'') but instead also identify meaningful questions or, in other words, questions with answers that might be somewhat more generally applicable. 
+The existing solutions prompted the use of Batch Normalisation and Residual Networks (ResNets) to tackle the vanishing gradient problem. Batch Normalisation helps in the training of deep models by normalising the input to each layer, whereas residual networks help in the training of very deep models by preserving gradient information through the layers of the network. Focusing on 
+these solutions for the VGP, we implemented them in the VGG38 model and studied their effects on the model performance. \par
 
-For example, \citep{huang2017densely} end with \begin{quote}``Because of their compact internal representations and reduced feature redundancy, DenseNets may be good feature extractors for various computer vision tasks that build on convolutional features, e.g.,  [4,5].''\end{quote} 
+The results show that both BN and RC are successful in tackling the VGP problem, ensuring a healthy flow of gradients and boosting the ability of the model to learn from the data. The model is still overfitting on the data and there is still room for improvement in the model performance. It was also discussed how the model performance can be improved by modifying other 
+hyperparameters and trying different variations of BN (at specific layers) and RC (skipping across multiple layers or across downsampling layers). \par
 
-while \cite{bengio1993problem} state in their conclusions that \begin{quote}``There remains theoretical questions to be considered,  such as whether the problem with simple gradient descent  discussed in this paper would be observed with  chaotic attractors that are not  hyperbolic.''\\\end{quote}
-
-The length of this question description is indicative of the average length of a conclusion section}
+While both BN and RC improved gradient flow, the model still exhibited overfitting. The future work in this direction can look into hyperparameter tuning, regularization techniques, exploring architectural variations, dynamic learning rate scheduling \cite{smith2017cyclical}, and ensemble methods \cite{hinton2012improving}; in tandem with BN and RC. The focus should also be on 
+reducing model complexity and computational cost while improving the model performance.}
 }
+
+% Question 5 - Briefly draw your conclusions based on the results from the previous sections (what are the take-away messages?) and conclude your report with a recommendation for future work. 
+% Good recommendations for future work also draw on the broader literature (the papers already referenced are good starting points). Great recommendations for future work are not just incremental (an example of an incremental suggestion would be: ``we could also train with different learning rates'') but instead also identify meaningful questions or, in other words, questions with answers that might be somewhat more generally applicable. 
+% For example, \citep{huang2017densely} end with \begin{quote}``Because of their compact internal representations and reduced feature redundancy, DenseNets may be good feature extractors for various computer vision tasks that build on convolutional features, e.g.,  [4,5].''\end{quote} 
+% while \cite{bengio1993problem} state in their conclusions that \begin{quote}``There remains theoretical questions to be considered,  such as whether the problem with simple gradient descent  discussed in this paper would be observed with  chaotic attractors that are not  hyperbolic.''\\\end{quote}}}
+% The length of this question description is indicative of the average length of a conclusion section
 
 
 %% - - - - - - - - - - - - FIGURES - - - - - - - - - - - - 

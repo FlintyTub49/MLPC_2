@@ -4,45 +4,45 @@ The top-level auxiliary file: mlp-cw2-template.aux
 The style file: icml2017.bst
 Database file #1: refs.bib
 Warning--empty journal in krizhevsky2009learning
-You've used 11 entries,
+You've used 13 entries,
             2773 wiz_defined-function locations,
-            662 strings with 6900 characters,
-and the built_in function-call counts, 6207 in all, are:
-= -- 577
-> -- 328
-< -- 11
-+ -- 110
-- -- 99
-* -- 459
-:= -- 884
-add.period$ -- 37
-call.type$ -- 11
-change.case$ -- 63
-chr.to.int$ -- 11
-cite$ -- 23
-duplicate$ -- 312
-empty$ -- 515
-format.name$ -- 117
-if$ -- 1374
+            670 strings with 7251 characters,
+and the built_in function-call counts, 7048 in all, are:
+= -- 643
+> -- 386
+< -- 12
++ -- 130
+- -- 117
+* -- 521
+:= -- 1018
+add.period$ -- 43
+call.type$ -- 13
+change.case$ -- 75
+chr.to.int$ -- 13
+cite$ -- 27
+duplicate$ -- 355
+empty$ -- 586
+format.name$ -- 137
+if$ -- 1548
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 12
-newline$ -- 63
-num.names$ -- 44
-pop$ -- 150
+missing$ -- 14
+newline$ -- 73
+num.names$ -- 52
+pop$ -- 179
 preamble$ -- 1
-purify$ -- 53
+purify$ -- 63
 quote$ -- 0
-skip$ -- 258
+skip$ -- 288
 stack$ -- 0
-substring$ -- 282
-swap$ -- 81
+substring$ -- 286
+swap$ -- 84
 text.length$ -- 7
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 116
+type$ -- 138
 warning$ -- 1
-while$ -- 56
+while$ -- 62
 width$ -- 0
-write$ -- 150
+write$ -- 174
 (There was 1 warning)

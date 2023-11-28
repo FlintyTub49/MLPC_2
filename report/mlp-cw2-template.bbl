@@ -1,4 +1,4 @@
-\begin{thebibliography}{11}
+\begin{thebibliography}{13}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -24,6 +24,11 @@ Glorot, Xavier and Bengio, Yoshua.
 He, Kaiming, Zhang, Xiangyu, Ren, Shaoqing, and Sun, Jian.
 \newblock Deep residual learning for image recognition.
 \newblock In \emph{Proceedings of the IEEE conference on computer vision and pattern recognition}, pp.\  770--778, 2016.
+
+\bibitem[Hinton et~al.(2012)Hinton, Srivastava, Krizhevsky, Sutskever, and Salakhutdinov]{hinton2012improving}
+Hinton, Geoffrey~E., Srivastava, Nitish, Krizhevsky, Alex, Sutskever, Ilya, and Salakhutdinov, Ruslan~R.
+\newblock Improving neural networks by preventing co-adaptation of feature detectors.
+\newblock \emph{arXiv preprint arXiv:1207.0580}, 2012.
 
 \bibitem[Huang et~al.(2017)Huang, Liu, Van Der~Maaten, and Weinberger]{huang2017densely}
 Huang, Gao, Liu, Zhuang, Van Der~Maaten, Laurens, and Weinberger, Kilian~Q.
@@ -59,5 +64,10 @@ Santurkar, Shibani, Tsipras, Dimitris, Ilyas, Andrew, and M{\k{a}}dry, Aleksande
 Simonyan, Karen and Zisserman, Andrew.
 \newblock Very deep convolutional networks for large-scale image recognition.
 \newblock \emph{arXiv preprint arXiv:1409.1556}, 2014.
+
+\bibitem[Smith(2017)]{smith2017cyclical}
+Smith, Leslie~N.
+\newblock Cyclical learning rates for training neural networks.
+\newblock In \emph{arXiv preprint arXiv:1506.01186}, 2017.
 
 \end{thebibliography}
