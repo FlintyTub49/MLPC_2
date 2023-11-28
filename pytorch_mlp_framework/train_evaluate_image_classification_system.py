@@ -3,6 +3,7 @@ import torch
 from torch.utils.data import DataLoader
 from torchvision import transforms
 
+# Added to fix multiprocessing error on MacOS
 import multiprocessing as mp
 mp.set_start_method('fork')
 
@@ -58,10 +59,10 @@ test_data_loader = DataLoader(test_data, batch_size=args.batch_size, shuffle=Tru
 if args.block_type == 'conv_block':
     processing_block_type = ConvolutionalProcessingBlock
     dim_reduction_block_type = ConvolutionalDimensionalityReductionBlock
-elif args.block_type == 'batch_norm':
+elif args.block_type == 'batch_norm': # Implementing the convolutional block with batch normalisations
     processing_block_type = ConvolutionBlockBN
     dim_reduction_block_type = ConvolutionalReductionBlockBN
-elif args.block_type == 'bn_rc':
+elif args.block_type == 'bn_rc': # Implementing the convolutional block with batch normalisations and residual connections
     processing_block_type = ConvolutionBlockBNRC
     dim_reduction_block_type = ConvolutionalReductionBlockBN
 elif args.block_type == 'empty_block':
@@ -84,7 +85,7 @@ conv_experiment = ExperimentBuilder(network_model=custom_conv_net,
                                     use_gpu=args.use_gpu,
                                     continue_from_epoch=args.continue_from_epoch,
                                     train_data=train_data_loader, val_data=val_data_loader,
-                                    test_data=test_data_loader,
-                                    learning_rate=args.lr)  # build an experiment object
+                                    test_data=test_data_loader, # build an experiment object
+                                    learning_rate=args.lr) # Added learning rate parameter
 
 experiment_metrics, test_metrics = conv_experiment.run_experiment()  # run experiment and return experiment metrics

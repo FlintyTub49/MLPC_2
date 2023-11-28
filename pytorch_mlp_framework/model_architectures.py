@@ -341,6 +341,9 @@ class ConvolutionalNetwork(nn.Module):
 
 
 class ConvolutionBlockBN(nn.Module):
+    """
+    Added convolutional block which implements batch normalisation
+    """
     def __init__(self, input_shape, num_filters, kernel_size, padding, bias, dilation):
         super(ConvolutionBlockBN, self).__init__()
 
@@ -395,6 +398,9 @@ class ConvolutionBlockBN(nn.Module):
 
 
 class ConvolutionalReductionBlockBN(nn.Module):
+    """
+    Added convolutional block which implements batch normalisation and dimensionality reduction
+    """
     def __init__(self, input_shape, num_filters, kernel_size, padding, bias, dilation, reduction_factor):
         super(ConvolutionalReductionBlockBN, self).__init__()
 
@@ -453,6 +459,9 @@ class ConvolutionalReductionBlockBN(nn.Module):
     
 
 class ConvolutionBlockBNRC(nn.Module):
+    """
+    Added convolutional block which implements batch normalisation and residual connections
+    """
     def __init__(self, input_shape, num_filters, kernel_size, padding, bias, dilation):
         super(ConvolutionBlockBNRC, self).__init__()
 

@@ -49,7 +49,7 @@ def get_args():
                         help='Type of convolutional blocks to use in our network '
                              '(This argument will be useful in running experiments to debug your network)')
     parser.add_argument('--lr', type=float, default=0.001,
-                        help='Learning rate to use for Adam')
+                        help='Learning rate to use for Adam') # Added learning rate parameter to the argument parser
     args = parser.parse_args()
     print(args)
     return args
