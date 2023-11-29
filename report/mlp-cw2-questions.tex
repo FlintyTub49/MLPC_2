@@ -94,7 +94,7 @@ these solutions for the VGP, we implemented them in the VGG38 model and studied 
 The results show that both BN and RC are successful in tackling the VGP problem, ensuring a healthy flow of gradients and boosting the ability of the model to learn from the data. The model is still overfitting on the data and there is still room for improvement in the model performance. It was also discussed how the model performance can be improved by modifying other 
 hyperparameters and trying different variations of BN (at specific layers) and RC (skipping across multiple layers or across downsampling layers). \par
 
-While both BN and RC improved gradient flow, the model still exhibited overfitting. The future work in this direction can look into hyperparameter tuning, regularization techniques, exploring architectural variations, dynamic learning rate scheduling \cite{smith2017cyclical}, and ensemble methods \cite{hinton2012improving}; in tandem with BN and RC. The focus should also be on 
+While both BN and RC improved gradient flow, the model still exhibited overfitting. The future work in this direction can look into hyperparameter tuning, regularization techniques, exploring architectural variations, dynamic learning rate scheduling \cite{smith2017cyclical}, and omittance of feature detectors \cite{hinton2012improving}; in tandem with BN and RC. The focus should also be on 
 reducing model complexity and computational cost while improving the model performance.}
 }
 
