@@ -32,9 +32,9 @@ This is further supported by Figure 1 (a) and (b) which show that the loss of th
 
 % ----------------------------- Question 2: ----------------------------- %
 \newcommand{\questionTwo} {
-\youranswer{Network capacity refers to a model's ability to capture complex patterns and representations from the data. A model like VGG38 or 56-Layer plain network \cite{he2016deep} has a lot of network capacity due to its deeper architecture. But complex models like these are more likely to encounter the vanishing gradients problem, hindering effective weight update 
+\youranswer{Network capacity refers to a model's ability to capture complex patterns and representations from the data. A model like VGG38 or 56-Layer plain network \cite{he2016deep} has a lot of network capacity due to its deeper architecture. But complex models like these are equally likely to encounter the vanishing gradients problem, hindering effective weight update 
 in its earlier layers (Figure 3). This is because VGG38 is made to handle more complex tasks and larger datasets than CIFAR100, in which each image size is only $32\times32$. In contrast, a shallower model with relatively less network capacity (VGG08), exhibits normal gradient flow and is able to use its architecture and depth more efficiently to learn the data and 
-train a relatively better model (Figure 1(a)). Some other factors that may have contributed to this difference include the model architecture, optimisation techniques used and the quality of the dataset.}
+train a relatively better model (VGG08 still overfits) (Figure 1(a)). Some other factors that may have contributed to this difference include the model architecture, optimisation techniques used and the quality of the dataset.}
 }
 % Question 2 - Consider these results (including Figure 1 from \cite{he2016deep}). Discuss the relation between network capacity and overfitting, and whether, and how, this is reflected on these results. What other factors may have lead to this difference in performance?
 % The average length for an answer to this question is approximately 1/5 of the columns in a 2-column page}
@@ -45,7 +45,7 @@ train a relatively better model (Figure 1(a)). Some other factors that may have 
 training of deep models. We would have to alter the model architecture in order to incorportate this ability in our model. There are 2 primary ways to implement this - Direct Residual Connections \& Bottleneck Residual Connections \cite{he2016deep}:
 \begin{itemize}
     \item Direct Residual Connections: In this method, the input gradients are directly added to the output of the downsampled layer. This method is very intuitive and relatively easy to implement in the model architecture. If we were to look at the downsides of this method, it still carries the risk of attracting the phenomenon of vanishing gradients in very deep models. 
-    It might also be not very efficient for models with extensive depth.
+    It might also be not very efficient for models with extensive depth. Sometimes this method is implemented with the help of zero-padding, this also adds additional parameters to the model.
     \item Bottleneck Residual Connections: This method utilises $1\times1$ convolutions to reduce and expand the number of features in the model enabling healthier gradient flow. This also helps in reducing the number of parameters effectively reducing the computational cost of the model. Although it is better at tackling the issue of vanishing gradients in very deep models, 
     it is more complex than Direct Residual Connections and adds extra $1\times1$ convolutions to the model architecture.
 \end{itemize}}
@@ -59,13 +59,13 @@ training of deep models. We would have to alter the model architecture in order 
 We introduced batch normalisation and residual connections in the VGG38 model architecture to combat the problem of vanishing gradients. Batch Normalisation prevents the weights from getting too large or small ensuring a healthy flow of the gradient through the layers. It is to be noted that the addition of Batch Normalisation adds approximately \textit{3,000} parameters to the 
 model increasing the computational cost to train it. Direct Residual Connections (Section 5.1) does not add any parameters to the model. It ensures the preservation of gradient in training of very deep models.\par 
 
-The introduction of these modifications instantly fixes the problem of vanishing gradient and the model starts to learn some features from the data. Keeping the learning rate constant, the end results are marginally better than that of the baseline VGG08 model but the loss is still relatively high and there is still room for improvement in the accuracy of the model (Table 1).\par
+The introduction of these modifications instantly fixes the problem of vanishing gradient and the model starts to learn some features from the data. Keeping the learning rate constant, the end results are marginally better than that of the baseline VGG08 model (accuracy increased by 1.74\%), but the loss is still relatively high and there is still room for improvement in the accuracy of the model (Table 1).\par
 
 We then combined the two methods to see if they boost the model performance. There was little improvement when compared to the model with residual connections indicating that other parameters of the model have to be changed to get better results. The learning rate (LR) was increased to \textit{0.01} from \textit{0.001}. This was first changed in the model with only batch 
 normalisation to study its effects on the model. This variation ended up performing worse than the previous models (Table 1). \par
 
-This new learning rate was then applied to the VGG38 model with both Batch Normalisation and Residual Connections. This significantly improved the model's performance on the train set but not that much test set. This combination of large learning rate with BN and RC has ensured the healthy flow of gradient, but due to its huge network capacity and small 
-dataset for its size, the model is still overfitting on the data.\par
+This new learning rate was then applied to the VGG38 model with both Batch Normalisation and Residual Connections. This significantly improved the model's performance reducing the loss (Figure 4(a)) and giving the best accuracy of 71.01\%. The large learning rate is also the reason why the training curves are jagged lines, beacuse the model is always overshooting the local minima. The combination of large 
+learning rate with BN and RC has ensured the healthy flow of gradient, but due to its huge network capacity and small dataset for its size, the model has started to overfit on the data.\par
 
 Taking this experiment further, we can implement BN and RC in the VGG08 model to see if it helps in learning more complex features of the data. Alternatively, we could also try modifying the LR in the VGG38 model with just the RC and evaluate how the relatively big jumps in gradients along with shortcuts in the different layers of the CNN influence the training of the model. \par
 
@@ -124,10 +124,25 @@ reducing model complexity and computational cost while improving the model perfo
 \youranswer{Question Figure 4
 % Replace this image with a figure depicting the training curves for the model with the best performance \textit{across experiments you have available (you don't need to run the experiments for the models we already give you results for)}. Edit the caption so that it clearly identifies the model and what is depicted.
 \begin{figure}[t]
-    \centering
-    \includegraphics[width=\linewidth]{figures/best_model_accuracy_performance.pdf} % Placeholder - example-image-duck
-    \caption{Training curves for VGG38 with Batch Normalisation and Residual Connections in terms of classification accuracy}
-    \label{fig:grad_flow_bestModel}
+    % \centering
+    % \includegraphics[width=\linewidth]{figures/best_model_accuracy_performance.pdf} % Placeholder - example-image-duck
+    % \caption{Training curves for VGG38 with Batch Normalisation and Residual Connections in terms of classification accuracy}
+    % \label{fig:grad_flow_bestModel}
+
+    \begin{subfigure}{\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/best_model_loss_performance.pdf}
+        \caption{Cross entropy error per epoch}
+        \label{fig:loss_curves}
+    \end{subfigure}
+
+    \begin{subfigure}{\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/best_model_accuracy_performance.pdf}
+        \caption{Classification accuracy per epoch}
+        \label{fig:acc_curves}
+    \end{subfigure}
+    \caption{Training curves for VGG38 with Batch Normalisation and Residual Connections in terms of (a) cross-entropy error and (b) classification accuracy}
 \end{figure}
 }}
 

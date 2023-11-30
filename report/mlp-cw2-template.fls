@@ -1008,6 +1008,11 @@ INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/bbm-macros/ubbm.fd
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/bbm/bbm10.tfm
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/bbm/bbm7.tfm
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/bbm/bbm5.tfm
+INPUT ./figures/best_model_loss_performance.pdf
+INPUT ./figures/best_model_loss_performance.pdf
+INPUT figures/best_model_loss_performance.pdf
+INPUT ./figures/best_model_loss_performance.pdf
+INPUT ./figures/best_model_loss_performance.pdf
 INPUT ./figures/best_model_accuracy_performance.pdf
 INPUT ./figures/best_model_accuracy_performance.pdf
 INPUT figures/best_model_accuracy_performance.pdf
